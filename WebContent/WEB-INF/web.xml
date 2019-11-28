@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<!-- Controller Servlet Pages -->
+
+	<welcome-file-list>
+		<welcome-file>loginpage_app.jsp </welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>SearchController</servlet-name>
+		<servlet-class>com.leave.SearchController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+
+		<servlet-name>SearchController</servlet-name>
+		<url-pattern>/servlet/leave.SearchController</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Leavedbconnector</servlet-name>
+		<servlet-class>com.leave.Leavedbconnector</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Leavedbconnector</servlet-name>
+		<url-pattern>/servlet/leave.Leavedbconnector</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Leavedbconnector1</servlet-name>
+		<servlet-class>com.leave.Leavedbconnector1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Leavedbconnector1</servlet-name>
+		<url-pattern>/servlet/leave.Leavedbconnector1</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DesignationSearch</servlet-name>
+		<servlet-class>com.leave.DesignationSearch</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DesignationSearch</servlet-name>
+		<url-pattern>/DesignationSearch</url-pattern>
+	</servlet-mapping>
+
+</web-app>
