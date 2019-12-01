@@ -11,9 +11,7 @@ public class GetDays {
 	static final long ONE_DAY = 86400000;
 
 	public long Getdays1(String fromdate, String todate) throws Exception
-
 	{
-
 		int iDate = Integer.parseInt(fromdate.substring(0, 2));
 		int iYear = Integer.parseInt(fromdate.substring(7, 11));
 		String sMonth = fromdate.substring(3, 6);
@@ -84,7 +82,6 @@ public class GetDays {
 		Date d2 = c2.getTime();
 
 		return ((d2.getTime() + ONE_DAY - d1.getTime() + ONE_HOUR) / (ONE_HOUR * 24));
-
 	}
 
 	public static void main(String args[]) {
@@ -97,7 +94,6 @@ public class GetDays {
 		catch (Exception w) {
 			System.out.println("Exception++++>>>" + w);
 		}
-
 	}
 
 }

@@ -7,8 +7,6 @@
 <%@page import="com.leave.Showdetail"%>
 <%@page import="com.leave.sendMailFile1"%>
 
-
-
 <script language="javascript">
 	function backfunc() {
 		document.form1.action = "../leave/leaveapp1.jsp";
@@ -21,17 +19,13 @@
 </head>
 <BODY background="../leave/images5.jpg" width="600" height="600">
 	<form name="form1" method="post">
-
 		<b>
 			<p align="center">LEAVE APPLICATION FORM</p>
 		</b>
-
 		<table
 			style="border: 1px solid #000000; padding: 1px; background-color: #E1E1E1; font-family: Arial; font-size: 10pt"
 			width="800" align="center" border="1" id="table1" cellpadding="0"
 			bgcolor="#FFFFFF" cellspacing="0">
-
-
 			<%
 				int vsize = 0;
 				Vector v1 = null;
@@ -46,16 +40,12 @@
 				int d = data.size();
 
 				for (int j = 0; j < d; j++)
-
 				{
-
 					v1 = (Vector) data.get(j);
 
 					vsize = v1.size() > 0 ? v1.size() : 0;
 					System.out.println("size of vector==" + vsize);
-
 					for (int i = 0; i < vsize; i++)
-
 					{
 						String got = (String) v1.get(i);
 						// String got1=(String) v1.get(1);
@@ -67,10 +57,6 @@
 					System.out.println("data===>>" + v2);
 				}
 			%>
-
-
-
-
 
 			<tr>
 				<td width="25%" bgcolor="#E1E1E1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name
@@ -99,15 +85,11 @@
 					work Location</td>
 				<td width="3%"><b> :</b></td>
 				<td width="20%"><b> <%=v2.get(4) != null ? v2.get(4) : ""%></b></td>
-
 				<td width="20%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Department
 					<b> :</b>
 				</td>
-
 				<td width="20%"><b> <%=v2.get(5) != null ? v2.get(5) : ""%></b></td>
 			</tr>
-
-
 			<%
 				if (v2.get(6) != null) {
 			%>
@@ -121,12 +103,10 @@
 					<b> :</b>
 				</td>
 				<td width="25%"><b><%=v2.get(7) != null ? v2.get(7) : ""%></b></td>
-
 			</tr>
 			<%
 				}
 			%>
-
 			<%
 				if (v2.get(8) != null) {
 			%>
@@ -140,12 +120,10 @@
 					<b> :</b>
 				</td>
 				<td width="25%"><b><%=v2.get(9) != null ? v2.get(9) : ""%></b></td>
-
 			</tr>
 			<%
 				}
 			%>
-
 			<%
 				if (v2.get(10) != null) {
 			%>
@@ -160,16 +138,13 @@
 				</td>
 				<td width="25%"><b> <%=v2.get(11) != null ? v2.get(11) : ""%>
 				</b></td>
-
 				<%
 					}
 				%>
-
 				<%
 					if (v2.get(12) != null && v2.get(13) != null) {
 				%>
 			</tr>
-
 			<tr>
 				<td width="15%" bgcolor="#E1E1E1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type
 					of Leave Applied</td>
@@ -180,12 +155,10 @@
 						:</b>
 				</td>
 				<td><b><%=v2.get(13) != null ? v2.get(13) : ""%></b></td>
-
 			</tr>
 			<%
 				}
 			%>
-
 			<%
 				if (v2.get(14) != null && v2.get(15) != null) {
 			%>
@@ -201,23 +174,19 @@
 				<td><b> <%=v2.get(15) != null ? v2.get(15) : ""%>
 				</b></td>
 				</td>
-
 			</tr>
 			<%
 				}
 			%>
-
 			<tr>
 				<td width="25%" bgcolor="#E1E1E1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reason
 					for leave</td>
 				<td width="3%"><b> :</b></td>
 				<td width="25%"><b> <%=v2.get(16) != null ? v2.get(16) : ""%></b></td>
 			</tr>
-
 			<%
 				if (v2.get(17) != null && v2.get(18) != null) {
 			%>
-
 			<tr>
 				<td width="25%" bgcolor="#E1E1E1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From
 					Date<b> :</b>
@@ -230,17 +199,14 @@
 				<td width="25%"><b> <%=v2.get(18) != null ? v2.get(18) : ""%>
 				</b></td>
 			</tr>
-
 			<%
 				}
 			%>
-
 			<tr>
 				<td width="25%" bgcolor="#E1E1E1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact
 					No**</td>
 				<td width="3%"><b> :</b></td>
 				<td width="25%"><b> <%=v2.get(19) != null ? v2.get(19) : ""%></b></td>
-
 			</tr>
 			<%
 				if (v2.get(20) != null) {
@@ -251,12 +217,10 @@
 					days or more</td>
 				<td width="3%"><b> :</b></td>
 				<td width="25%"><b> <%=v2.get(20) != null ? v2.get(20) : ""%></b></td>
-
 			</tr>
 			<%
 				}
 			%>
-
 			<tr>
 				<td width="25%" bgcolor="#E1E1E1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Leave
 					Approved By</td>
@@ -264,8 +228,6 @@
 				<td width="25%"><b> <%=v2.get(21) != null ? v2.get(21) : ""%></b></td>
 
 			</tr>
-
-
 			<tr>
 				<td width="25%" bgcolor="#E1E1E1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Approvers
 					Department</td>
@@ -276,17 +238,8 @@
 				</td>
 				<td width="25%"><b><%=v2.get(23) != null ? v2.get(23) : ""%></b></td>
 			</tr>
-
-
-
-
 		</table>
-
-
-
-
 		<input type="hidden" name="mode">
-
 	</form>
 </body>
 </html>

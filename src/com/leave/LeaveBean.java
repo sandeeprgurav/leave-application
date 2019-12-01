@@ -2,9 +2,7 @@ package com.leave;
 
 import java.util.Vector;
 
-public class LeaveBean implements java.io.Serializable
-
-{
+public class LeaveBean implements java.io.Serializable {
 	private String mode;
 	private String Name;
 	private String Designation;
@@ -32,8 +30,6 @@ public class LeaveBean implements java.io.Serializable
 	private String Compoff_date;
 	private Vector data;
 	private Vector col;
-
-	/* setter's methods */
 
 	public void setData(Vector param) {
 		this.data = param;
@@ -143,7 +139,6 @@ public class LeaveBean implements java.io.Serializable
 		this.Half_day_date = param;
 	}
 
-	/* getter's methods */
 	public Vector getData() {
 		return data;
 	}
@@ -251,5 +246,4 @@ public class LeaveBean implements java.io.Serializable
 	public String getHalf_day_date() {
 		return Half_day_date;
 	}
-
 }

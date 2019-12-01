@@ -10,7 +10,6 @@
 <HEAD>
 <TITLE>New Document</TITLE>
 </HEAD>
-
 <BODY bgcolor="#032C95">
 	<center>
 		<br> <br> <br>
@@ -19,20 +18,17 @@
 			String session_check_password = (String) session.getAttribute("login_password1");
 			if (session_check_username == null || session_check_password == null) {
 		%>
-
 		<script>
 			alert('Session is completed  \n Please Login again')
 		</script>
 		<script>
-			window
-					.navigate('http://192.168.20.91:8081/LeaveApplication/leave/loginpage_app.jsp')
+			window.navigate('http://192.168.20.91:8081/LeaveApplication/leave/loginpage_app.jsp')
 		</script>
 		<%
 			}
 		%>
 		<%
 			LeaveBean foundData1 = null;
-
 			foundData1 = new LeaveBean();
 		%>
 		<table border="0" width="100%">
@@ -79,6 +75,5 @@
 		</table>
 		<input type="hidden" name="mode2">
 	</center>
-
 </BODY>
 </HTML>

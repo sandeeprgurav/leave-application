@@ -1,6 +1,5 @@
 package com.leave;
 
-//import common.JndiConnection;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -71,14 +70,12 @@ public class CreateCTLFinal {
 					if (delimiter != null) {
 						bw.write(delimiter.trim());
 						bw.newLine();
-
 					}
 
 					String when = rs.getString("when") != null ? rs.getString("when") : "";
 					if (when != null) {
 						bw.write("when   " + when.trim());
 						bw.newLine();
-
 					}
 					bw.write("(");
 					bw.newLine();
@@ -103,15 +100,12 @@ public class CreateCTLFinal {
 						a = rs.getRow();
 						System.out.println("no of rows.....>>>>>" + a);
 						while (rsCol.next()) {
-
 							String addCol = rsCol.getString("add_col");
-
 							if (addCol.equalsIgnoreCase("Y")) {
 								String columnName = rsCol.getString("COLUMN_NAME");
 								System.out.println("col name....." + columnName);
 								if (columnName != null) {
 									bw.write(columnName + "");
-
 									int sStartPos = rsCol.getInt("START_POS1");
 									if (sStartPos != 0) {
 										bw.write("   position (" + sStartPos + "");
@@ -129,19 +123,16 @@ public class CreateCTLFinal {
 											bw.write("   " + sDataType + " External");
 										else
 											bw.write("  " + sDataType + "");
-
 									}
 
 									int intLength = rsCol.getInt("LENGTH1");
 									if (intLength != 0) {
 										bw.write("(" + intLength + ")");
-
 									}
 
 									String sTerm_cond = rsCol.getString("TERM_CD1");
 									if (!sTerm_cond.equalsIgnoreCase("-")) {
 										bw.write("   " + sTerm_cond + "");
-
 									}
 
 									String sNullIfCd = rsCol.getString("NULLIF_CD1");
@@ -150,12 +141,10 @@ public class CreateCTLFinal {
 										String sColName1 = rsCol.getString("COL_NAME1");
 										if (!sColName1.equalsIgnoreCase("-")) {
 											bw.write("  " + sColName1 + "=");
-
 										}
 										String svalue = rsCol.getString("VALUE1");
 										if (!svalue.equalsIgnoreCase("-")) {
 											bw.write("" + svalue + "");
-
 										}
 										String sCondition = rsCol.getString("CONDITION1");
 										if (!sCondition.equalsIgnoreCase("-")) {
@@ -166,34 +155,21 @@ public class CreateCTLFinal {
 									if (!rsCol.isLast())
 										bw.write(",");
 									bw.newLine();
-
 								}
-
 							}
-
 						}
-
 						bw.write(")");
 						bw.newLine();
 						bw.newLine();
-
 					} catch (Exception e1) {
-
 						System.out.println("Exception occured insid inner loop....." + e1);
 					} finally {
-
 					}
-
 				}
-
 			}
-
 		} catch (Exception e) {
 			System.out.println("Exception occured.........." + e);
-		}
-
-		finally {
-
+		} finally {
 			bw.close();
 			fw.close();
 		}

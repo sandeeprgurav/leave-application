@@ -45,64 +45,27 @@ class checkbox
 			for (int index = 0; index < select.length; index++)
 
 			{
-
 				strTemp = select[index].split("~");
-
-				System.out.println("value of select============sandeep" + select[index]);
-
 				approveby = strTemp[0];
-				System.out.println("approveby===>" + approveby);
-
 				fromdate = strTemp[1];
-				System.out.println("fromdate===>" + fromdate);
-
 				todate = strTemp[2];
-				System.out.println("todate===>" + todate);
-
 				type[0] = strTemp[3];
-				System.out.println("type===>" + type);
-
 				empcode = strTemp[4];
-				System.out.println("empcode===>" + empcode);
-
 				entry_date = strTemp[5];
-				System.out.println("entry_date===>" + entry_date);
-
 				comp_off_date = strTemp[6];
-				System.out.println("comp_off_date===>" + comp_off_date);
-
 				half_day_date = strTemp[7];
-				System.out.println("half_day_date===>" + half_day_date);
-
 				privilege_day = Integer.parseInt(strTemp[8].toString());
-				System.out.println("privilege_day===>" + privilege_day);
-
 				casual_day = Integer.parseInt(strTemp[9].toString());
-				System.out.println("casual_day===>" + casual_day);
-
 				sick_day = Integer.parseInt(strTemp[10].toString());
-				System.out.println("sick_day===>" + sick_day);
-
 				rid = strTemp[11];
-				System.out.println("rid===>" + rid);
 
 				for (int index1 = 0; index1 < type.length; index1++) {
 					strTemp1 = type[index1].split("/");
-
 					type1 = strTemp1[0];
-					System.out.println("type1===>" + type1);
-
 					type2 = strTemp1[1];
-					System.out.println("type2===>" + type2);
-
 					type3 = strTemp1[2];
-					System.out.println("type3===>" + type3);
-
 					type4 = strTemp1[3];
-					System.out.println("type4===>" + type4);
-
 					type5 = strTemp1[4];
-					System.out.println("type5===>" + type5);
 				}
 
 				try {
@@ -110,7 +73,6 @@ class checkbox
 					PreparedStatement pStmt = null;
 					ResultSet rs = null;
 					connection = DBCon.getConnection();
-					// and entry_date='"+entry_date +"'
 
 					String query = " update LEAVEAPP1 set approve_by='" + approveby
 							+ "',approve_date=now() where employee_code='" + empcode + "' and rid='" + rid
@@ -120,8 +82,6 @@ class checkbox
 
 					pStmt = connection.prepareStatement(query);
 					pStmt.executeUpdate();
-					System.out.println(
-							"*************************data successfully updated in select check ********************");
 
 					float balance_leave = 0;
 					PreparedStatement pt = null;
@@ -134,9 +94,6 @@ class checkbox
 						balance_leave = (int) rs11.getInt("Balance_leave");
 						System.out.println("balance_leave===>>>" + balance_leave);
 					}
-
-					// GetDays days= new GetDays();
-					// int day=(int)days.Getdays1(fromdate,todate);
 
 					int casualmax = 0;
 					int casualmax1 = 0;
@@ -153,12 +110,8 @@ class checkbox
 					int sick = 0;
 					int casual = 0;
 					int extraleave = 0;
-					// System.out.println("DAY between fromdate and todate==>>>"+day);
 
-					if (type1.equalsIgnoreCase("casual_leave"))
-
-					{
-
+					if (type1.equalsIgnoreCase("casual_leave")) {
 						try {
 							PreparedStatement pStmt1 = null;
 							ResultSet rs1 = null;
@@ -172,16 +125,11 @@ class checkbox
 							while (rs1.next()) {
 								casualmax = (int) rs1.getInt("casual_leave");
 								extraleavemax = (int) rs1.getInt("extra_leave");
-								System.out.println("casualmax===>>>" + casualmax);
-								System.out.println("extraleavemax===>>>" + extraleavemax);
 							}
 
 							if ((casualmax + casual_day) <= 15) {
 								casualmax1 = casualmax + casual_day;
-							}
-
-							else {
-
+							} else {
 								extraleave = (casualmax + casual_day) - 15;
 								extraleave = extraleave + extraleavemax;
 
@@ -210,17 +158,13 @@ class checkbox
 							pStmt2.executeQuery();
 
 						} catch (Exception e5) {
-
 							System.out.println("Exception in casual leave query===>>>" + e5);
-
 						}
 
 					}
 
 					if (type2.equalsIgnoreCase("sick_leave"))
-
 					{
-
 						PreparedStatement pStmt1 = null;
 						ResultSet rs1 = null;
 						String query1 = "select  sick_leave,extra_leave  from leaveinfo where employee_code='" + empcode
@@ -238,13 +182,9 @@ class checkbox
 
 						if ((sickmax + sick_day) <= 15) {
 							sickmax1 = sickmax + sick_day;
-						}
-
-						else {
-
+						} else {
 							extraleave = (sickmax + sick_day) - 15;
 							extraleave = extraleave + extraleavemax;
-
 							PreparedStatement pStmt4 = null;
 							String query4 = "update leaveinfo set extra_leave='" + extraleave
 									+ "' where employee_code='" + empcode + "'  ";
@@ -253,7 +193,6 @@ class checkbox
 
 							sick = sick_day - extraleave;
 							sickmax1 = sickmax + sick;
-
 						}
 
 						PreparedStatement pStmt2 = null;
@@ -268,9 +207,7 @@ class checkbox
 					}
 
 					if (type5.equalsIgnoreCase("privilege_leave"))
-
 					{
-
 						PreparedStatement pStmt1 = null;
 						ResultSet rs1 = null;
 						String query1 = "select  privilege_leave,extra_leave from leaveinfo where employee_code='"
@@ -288,9 +225,7 @@ class checkbox
 
 						if ((privilegemax + privilege_day) <= 15) {
 							privilegemax1 = privilegemax + privilege_day;
-						}
-
-						else {
+						} else {
 
 							extraleave = (privilegemax + privilege_day) - 15;
 							extraleave = extraleave + extraleavemax;
@@ -303,7 +238,6 @@ class checkbox
 
 							privilege = privilege_day - extraleave;
 							privilegemax1 = privilegemax + privilege;
-
 						}
 
 						PreparedStatement pStmt2 = null;
@@ -313,13 +247,9 @@ class checkbox
 								+ "' where employee_code='" + empcode + "'  ";
 						pStmt2 = connection.prepareStatement(query2);
 						pStmt2.executeQuery();
-
 					}
 
-					if (type4.equalsIgnoreCase("half_day"))
-
-					{
-
+					if (type4.equalsIgnoreCase("half_day"))	{
 						PreparedStatement pStmt1 = null;
 						ResultSet rs1 = null;
 						String query1 = "select  half_day from leaveinfo where employee_code='" + empcode + "' ";
@@ -333,9 +263,7 @@ class checkbox
 						}
 
 						halfmax1 = halfmax + 1;
-
 						balance_leave -= 0.5;
-
 						PreparedStatement pStmt2 = null;
 						ResultSet rs2 = null;
 
@@ -343,13 +271,9 @@ class checkbox
 								+ empcode + "'  ";
 						pStmt2 = connection.prepareStatement(query2);
 						pStmt2.executeQuery();
-
 					}
 
-					if (type3.equalsIgnoreCase("comp_off"))
-
-					{
-
+					if (type3.equalsIgnoreCase("comp_off"))	{
 						PreparedStatement pStmt1 = null;
 						ResultSet rs1 = null;
 						String query1 = "select  comp_off from leaveinfo where employee_code='" + empcode + "' ";
@@ -363,7 +287,6 @@ class checkbox
 						}
 
 						compmax1 = compmax + 1;
-
 						PreparedStatement pStmt2 = null;
 						ResultSet rs2 = null;
 
@@ -375,9 +298,7 @@ class checkbox
 					}
 
 					System.out.println("balance_leave after manipulation===>>>" + balance_leave);
-
 					PreparedStatement pSt = null;
-
 					String updatequery = "update leaveinfo set Balance_leave='" + balance_leave
 							+ "' where employee_code='" + empcode + "'  ";
 					pSt = connection.prepareStatement(updatequery);
@@ -389,25 +310,6 @@ class checkbox
 							+ "' where employee_code='" + empcode + "' and rid='" + rid + "' ";
 					pSt1 = connection.prepareStatement(updatequery1);
 					pSt1.executeQuery();
-
-					/*
-					 * PreparedStatement st18=null; ResultSet rs13=null; String email_id=null;
-					 * String
-					 * sql8="select email_id from leaveinfo where employee_code='"+empcode+"'";
-					 * 
-					 * 
-					 * PreparedStatement st18=connection.prepareStatement(sql8); ResultSet
-					 * rs13=st18.executeQuery(); while(rs13.next()) {
-					 * 
-					 * email_id=rs13.getString("email_id"); System.out.println("email_id"+email_id);
-					 * 
-					 * }
-					 * 
-					 * System.out.println("email_id ==>>>>>>>"+email_id);
-					 */
-
-					// ********************************sending mail to application applicant from
-					// approver******************************************
 
 					String to2 = null;
 					String from2 = null;
@@ -447,11 +349,8 @@ class checkbox
 					from2 = email_from;
 					host2 = "192.168.25.5";
 
-					//sendMailFile1 s3 = new sendMailFile1();
-					//s3.sendMail(to2, from2, host2, message);
-
-					// ********************************sending mail to HR from
-					// approver***************************************************************************
+					// sendMailFile1 s3 = new sendMailFile1();
+					// s3.sendMail(to2, from2, host2, message);
 
 					String message1 = "Leave Application of Employee code=" + empcode
 							+ " has been approved.\n \n Please check this.";
@@ -461,86 +360,49 @@ class checkbox
 
 					sendMailFile1 s2 = new sendMailFile1();
 					s2.sendMail(to1, from1, host1, message1);
-
-					// **********************************************************************************************************************
-
-				}
-
-				catch (Exception e) {
+				} catch (Exception e) {
 					System.out.println("exception==========>" + e);
 				}
-
 			}
-		}
-
-		else {
+		} else {
 			System.out.println("value of select" + select);
 		}
-
 	}
 
 	public void insert1(String reject[]) {
-
 		String rejectby = null;
 		String empcode = null;
 		String entry_date = null;
 		String strTemp[] = null;
 		strTemp = new String[3];
 
-		if (reject != null)
-
-		{
-
-			for (int index = 0; index < reject.length; index++)
-
-			{
-
+		if (reject != null)	{
+			for (int index = 0; index < reject.length; index++)	{
 				strTemp = reject[index].split("~");
-
 				rejectby = strTemp[0];
 				System.out.println("rejectby===>" + rejectby);
-
 				empcode = strTemp[1];
 				System.out.println("empcode===>" + empcode);
-
 				entry_date = strTemp[2];
 				System.out.println("entry_date===>" + entry_date);
 				try {
-
 					Connection connection = null;
 					PreparedStatement pStmt1 = null;
 					ResultSet rs1 = null;
 					connection = DBCon.getConnection();
-
 					String query1 = "update leaveapp set reject_by='" + rejectby
-							+ "',reject_date=now() where employee_code='" + empcode + "' and  entry_date='"
-							+ entry_date + "'";
+							+ "',reject_date=now() where employee_code='" + empcode + "' and  entry_date='" + entry_date
+							+ "'";
 
 					pStmt1 = connection.prepareStatement(query1);
 					pStmt1.executeUpdate();
-					System.out.println(
-							"*************************data successfully updated in reject  check ********************");
-
-				}
-
-				catch (Exception e)
-
-				{
-
+				} catch (Exception e) {
 					System.out.println("exception==========>" + e);
-
 				}
-
 			}
-		}
-
-		else {
+		} else {
 			System.out.println("value of reject" + reject);
 		}
-
 	}
 
-	public static void main(String[] args) {
-		System.out.println("Hello World!");
-	}
 }

@@ -39,25 +39,12 @@ public class DesignationSearch extends HttpServlet {
 		}
 
 		try {
-
 			Connection connection = null;
 			PreparedStatement pStmt = null;
 			ResultSet rs = null;
 			connection = DBCon.getConnection();
-
 			StringBuffer sb = null;
 			sb = new StringBuffer();
-
-			/*
-			 * String sqlString = "select designation  from employee_isg where department='"
-			 * +dept1+"' order by designation"; connection.prepareStatement(sqlString);
-			 * ResultSet resultSet = pStmt.executeQuery();
-			 * 
-			 * while (resultSet.next()) { sb.append("<option>" + resultSet.getString(3) +
-			 * "</option>\n"); }
-			 * 
-			 * 
-			 */
 			System.out.println("designatuion===" + strArgumentRetn);
 			System.out.println("Query ===" + Query);
 
@@ -93,9 +80,6 @@ public class DesignationSearch extends HttpServlet {
 			} else {
 				out.write("false");
 			}
-
-			// resultSet.close();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

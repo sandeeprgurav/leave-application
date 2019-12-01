@@ -12,7 +12,6 @@ public class Leavedbconnector extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		retriveData(request, response);
-
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,65 +22,44 @@ public class Leavedbconnector extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		RequestDispatcher requestDispatcher = null;
-
-		try
-
-		{
-
+		try {
 			Leavedbconnector1 leaveconn = new Leavedbconnector1();
 			LeaveBean lebean1 = (LeaveBean) request.getAttribute("LeaveBean");
-
 			if ("Searchapp".equals(lebean1.getMode()))
-
 			{
 				request.setAttribute("LeaveBean1", lebean1);
 				requestDispatcher = request.getRequestDispatcher("../servlet/leave.Leavedbconnector1");
 				requestDispatcher.forward(request, response);
-
 			}
 
 			if ("Searchhr".equals(lebean1.getMode()))
-
 			{
 				request.setAttribute("LeaveBean1", lebean1);
 				requestDispatcher = request.getRequestDispatcher("../servlet/leave.Leavedbconnector1");
 				requestDispatcher.forward(request, response);
-
 			}
 
 			if ("leave_detail".equals(lebean1.getMode()))
-
 			{
 				request.setAttribute("LeaveBean1", lebean1);
 				requestDispatcher = request.getRequestDispatcher("../servlet/leave.Leavedbconnector1");
 				requestDispatcher.forward(request, response);
-
 			}
 
 			if ("login_applicant".equals(lebean1.getMode()))
-
 			{
 				request.setAttribute("LeaveBean1", lebean1);
 				requestDispatcher = request.getRequestDispatcher("../servlet/leave.Leavedbconnector1");
 				requestDispatcher.forward(request, response);
-
 			}
 
 			if ("login_approver".equals(lebean1.getMode()))
-
 			{
 				request.setAttribute("LeaveBean1", lebean1);
 				requestDispatcher = request.getRequestDispatcher("../servlet/leave.Leavedbconnector1");
 				requestDispatcher.forward(request, response);
-
 			}
-
+		} catch (Exception e) {
 		}
-
-		catch (Exception e) {
-
-		}
-
 	}
-
 }

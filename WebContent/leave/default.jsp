@@ -1,7 +1,6 @@
 <%@page errorPage="ErrorHandler.jsp"%>
 <%@ page language="java"%>
-<%@ page
-	import="java.sql.*,java.io.*,java.util.*,java.text.*,com.leave.*"%>
+<%@ page import="java.sql.*,java.io.*,java.util.*,java.text.*,com.leave.*"%>
 <%@page import="java.io.*,java.sql.*"%>
 <%@page import="com.leave.LeaveBean"%>
 <%@page import="com.leave.sendMailFile1"%>
@@ -23,11 +22,8 @@
 %>
 <html>
 <head>
-
 <title>LEAVE APPLICATION</title>
-
 </head>
-
 <%
 	String mode_value = null;
 	mode_value = request.getParameter("mode2") == null ? "zero" : request.getParameter("mode2");
@@ -36,38 +32,26 @@
 
 	if (session_check_username != null || session_check_password != null) {
 		LeaveBean beanValues = (LeaveBean) session.getAttribute("foundData1");
-		//Vector dataValues =(Vector)session.getAttribute("approve_by_vector");
-		System.out.println("beanValues in default name==>>" + beanValues.getName());
-		//System.out.println("dataValues in default ==>>"+dataValues);
 	}
 
 	if (mode_value.equalsIgnoreCase("first")) {
-
 		path = "../leave/leaveapp.jsp";
-
 	}
 
 	if (mode_value.equalsIgnoreCase("second")) {
-
 		path = "../leave/leaveapp1.jsp";
-
 	}
 
 	if (mode_value.equalsIgnoreCase("third")) {
-
 		path = "../leave/leaveapp2.jsp";
-
 	}
 
 	if (mode_value.equalsIgnoreCase("fourth")) {
-
 		path = "../leave/leaveapp3.jsp";
-
 	}
 
 	if (mode_value.equalsIgnoreCase("zero")) {
 		path = "../leave/first_page.jsp";
-
 	}
 %>
 <input type="hidden" name="mode">
@@ -75,9 +59,6 @@
 	<frame name="banner" noresize src="../leave/top_page.jsp">
 	<frameset cols="220,*">
 		<frame name="left" noresize src="../leave/left_page.jsp">
-		<%
-			//path=path+"?foundData1="+founData+"&approve_by_vector="+approve_by;
-		%>
 		<frame name="content" src="<%=path%>">
 	</frameset>
 	<noframes>
@@ -87,4 +68,3 @@
 	</noframes>
 </frameset>
 </html>
-

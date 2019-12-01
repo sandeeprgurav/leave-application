@@ -1,6 +1,5 @@
 package com.leave;
 
-//import common.JndiConnection;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -87,9 +86,7 @@ public class CreateCTL {
 						intFindLastCol = intFindLastCol + 4;
 						String sLast_col_name = rs.getString(intFindLastCol);
 
-						// System.out.println("sLast_col_name....."+sLast_col_name);
 						String col1_name = rs.getString(++i1);
-						// System.out.println("col1_name....."+col1_name);
 						String col1_StartVal = rs.getString(++i1);
 						String col1_EndVal = rs.getString(++i1);
 
@@ -112,18 +109,13 @@ public class CreateCTL {
 						}
 
 					}
-
 				}
-
 			}
 
-		}
-
-		finally {
+		} finally {
 			bw.close();
 			fw.close();
 		}
 		return 1;
 	}
-
 }

@@ -43,6 +43,6 @@ public class IdUtil {
     }
 
     public static String generateId() {
-        return ("YP" + fetchGMTTimestamp() + fetchSequence());
+        return ("LA" + fetchGMTTimestamp() + fetchSequence());
     }
 }
